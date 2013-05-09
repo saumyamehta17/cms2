@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ContentManageNew</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+  <div class="container">
+    
+    <a class=brand >Pages Name -- </a>
+ <ul class="nav">
+ 
+  <% @pages.each do |page| %>
+ <li> <%= link_to page.title , page_path(page) %></li>
+ <% end %>
+  </ul>
+</div>
+</div>
+</div></div>  
+<div class="pull-right">
+   Welcome <%= current_user.username %> |
+  <%= link_to 'logout' , destroy_user_session_path %> |
+  <%= link_to 'All Sites' , sites_path %> |
+   <%= link_to 'profile' , profile_path(current_user.profile) %>
+ </div>
+<%= yield %>
+</body>
+</html>

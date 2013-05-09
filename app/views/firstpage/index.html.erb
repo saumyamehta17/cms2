@@ -1,0 +1,19 @@
+<html>
+<body>
+
+
+<div class="container">
+  <div class="user-nav" >
+ <% if user_signed_in? %>
+   
+  <%= link_to 'click' , sites_path %> |
+  <%= link_to 'logout' , destroy_user_session_path , method: :delete  %>
+<% else %>
+    <%= link_to 'Login' , new_user_session_path %> |
+    <%= link_to 'signup' , new_user_registration_path %>
+<% end %>  
+</div> 
+</div>
+
+</body>
+</html>
