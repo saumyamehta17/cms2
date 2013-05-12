@@ -24,6 +24,8 @@ group :assets do
   
 end
 
+gem 'quiet_assets', :group => :development
+gem 'thin'
 gem 'jquery-rails'
 gem 'devise'
 gem 'paperclip'
@@ -40,4 +42,4 @@ gem 'paperclip'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

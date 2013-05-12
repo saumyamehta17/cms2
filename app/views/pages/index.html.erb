@@ -8,24 +8,25 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:content) %></th>
-      <th><%= model_class.human_attribute_name(:site_id) %></th>
+     
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <body>
     <% @pages.each do |page| %>
       <tr>
-        <td><%= link_to page.id, page_path(page) %></td>
+         <% debugger %>
+        <td><%= link_to page.id, site_pages_path(@site) %></td>
         <td><%= page.title %></td>
         <td><%= page.content %></td>
-        <td><%= page.site_id %></td>
-        <td><%=l page.created_at %></td>
+       
+        <td><%= page.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_page_path(page), :class => 'btn btn-mini' %>
+                      edit_site_page_path(@site, @page), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      page_path(page),
+                      site_page_path(@site, @page),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>

@@ -1,11 +1,8 @@
 ContentManageNew::Application.routes.draw do
   resources :profiles
-
-
-  resources :pages
-
-
-  resources :sites
+  resources :sites do
+    resources :pages
+  end
 
 
   devise_for :users

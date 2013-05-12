@@ -12,7 +12,8 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to "new page" , new_page_path %>
+<%= link_to "new page" , new_site_page_path(@site) %>
+ 
   <%= link_to t('.back', :default => t("helpers.links.back")),
               sites_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
