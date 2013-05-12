@@ -7,24 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-  <div class="container">
-    
-    <a class=brand >Sites Name -- </a>
- <ul class="nav">
  
-  <% @sites.each do |site| %>
- <li > <%= link_to site.name , site_path(site) %>
-   
-   
-
- </li>
- <% end %>
-  </ul>
-</div>
-</div>
-</div></div>  
 <div class="pull-right">
    Welcome <%= current_user.username %> |
   <%= link_to 'logout' , destroy_user_session_path  , method: :delete %> |

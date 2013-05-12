@@ -2,10 +2,10 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-    debugger
-    @pages = Page.all
-     @site = Site.find(params[:site_id])
-
+    
+    
+    @site = Site.find(params[:site_id])
+    @pages = Page.where(:site_id => @site)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pages }
@@ -15,10 +15,11 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+
     @site = Site.find(params[:site_id])
     @page = Page.find(params[:id])
-    @pages = Page.all
-    @page.site = @site
+    @pages = Page.where(:site_id => @site)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @page }
@@ -30,7 +31,7 @@ class PagesController < ApplicationController
   def new
     @site = Site.find(params[:site_id])
     @page = Page.new
-     @pages = Page.all
+     @pages = Page.where(:site_id => @site)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }
@@ -43,7 +44,7 @@ class PagesController < ApplicationController
     @site = Site.find(params[:site_id])
     @page = Page.find(params[:id])
     @page.site = @site
-    @pages = Page.all
+    @pages = Page.where(:site_id => @site)
   end
 
   # POST /pages
@@ -72,15 +73,17 @@ class PagesController < ApplicationController
     
     @page = Page.find(params[:id])
     @site = Site.find(params[:site_id])
-     @pages = Page.all
-     @page.site = @site
+     @pages = Page.where(:site_id => @site)
+     
     respond_to do |format|
+      debugger
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        
+        format.html { render action: "show", notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+        # format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -92,7 +95,7 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to action: "index" }
       format.json { head :no_content }
     end
   end

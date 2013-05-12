@@ -8,12 +8,14 @@
   <dd><%= @site.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:url) %>:</strong></dt>
   <dd><%= @site.url %></dd>
-  
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @site.user_id %></dd>
 </dl>
 
 <div class="form-actions">
-<%= link_to "new page" , new_site_page_path(@site) %>
- 
+
+   <%= link_to t('.Pages', :default => t("helpers.links.Pages")),
+              site_pages_path(@site), :class => 'btn'  %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               sites_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
